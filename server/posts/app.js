@@ -1,16 +1,23 @@
 import express from "express";
 import { randomBytes } from "crypto";
-import { appendFile } from "fs";
+import morgan from "morgan";
+import cors from "cors";
 
 const app = express();
 app.use(express.json());
+app.use(morgan("dev"));
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
 
 const posts = {};
-
+console.log(posts);
 app.get("/posts", (req, res, next) => {
   res.send(posts);
 
-  res.status(200).json(posts);
+  // res.status(200).json(posts);
 });
 
 app.post("/posts", (req, res, next) => {
