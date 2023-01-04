@@ -1,11 +1,8 @@
 import { Container, Typography } from "@mui/material";
 import { useFetchPostsQuery } from "../../store/store";
 import PostListItem from "./postListItem";
-// console.log("rendering post list");
 
 const PostList = () => {
-  // console.log("rendering post list");
-
   const { data, error, isLoading } = useFetchPostsQuery();
 
   let content;

@@ -10,7 +10,8 @@ const CreatePost = () => {
   const [createPost, result] = useCreatePostMutation();
   const handleCreatePost = async (e) => {
     e.preventDefault();
-    return createPost({ title });
+    createPost({ title });
+    setTitle("");
   };
 
   return (

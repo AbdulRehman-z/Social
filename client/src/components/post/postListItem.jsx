@@ -1,32 +1,55 @@
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import { grey } from "@mui/material/colors";
+import CreateComment from "../comments/createComment";
 
 const PostListItem = ({ postsList }) => {
   return (
     <Box
       sx={{
+        // backgroundColor: grey[500],
+        width: "100%",
         marginTop: "2rem",
         display: "flex",
-        flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-around",
+        justifyContent: "space-between",
         flexWrap: "wrap",
-        bgcolor: grey[300],
       }}
     >
       {Object.values(postsList).map((post) => {
         return (
           <Card
             sx={{
-              maxWidth: "20rem",
-              backgroundColor: grey[50],
-              width: "50%",
-              margin: "1rem",
+              width: "40%",
+              height: "auto",
+              backgroundColor: grey[400],
+              marginTop: "2rem",
+              padding: "0.8rem",
+              boxShadow: "none",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
             key={post.id}
           >
-            <CardContent>
-              <Typography variant="h5">{post.title}</Typography>
+            <CardContent
+              sx={{
+                width: "100%",
+                height: "100%",
+                backgroundColor: grey[300],
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Typography
+                sx={{
+                  fontSize: "1.1rem",
+                }}
+              >
+                {post.title}
+              </Typography>
+
+              <CreateComment postId={post.id} />
             </CardContent>
           </Card>
         );
