@@ -13,11 +13,12 @@ const PostList = () => {
   } else {
     content = <PostListItem postsList={data} />;
   }
-
   return (
     <Container
+      maxWidth="lg"
       sx={{
-        width: "80%",
+        // backgroundColor: "#f5f",
+        padding: "0.5rem",
         marginTop: "4rem",
         display: "flex",
         flexDirection: "column",

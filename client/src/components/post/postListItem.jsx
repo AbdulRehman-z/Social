@@ -3,11 +3,13 @@ import { grey } from "@mui/material/colors";
 import CreateComment from "../comments/createComment";
 
 const PostListItem = ({ postsList }) => {
+  console.log("This is data");
+
   return (
     <Box
       sx={{
-        // backgroundColor: grey[500],
         width: "100%",
+        minHeight: "100%",
         marginTop: "2rem",
         display: "flex",
         alignItems: "center",
@@ -20,7 +22,7 @@ const PostListItem = ({ postsList }) => {
           <Card
             sx={{
               width: "40%",
-              height: "auto",
+              minheight: "20rem",
               backgroundColor: grey[400],
               marginTop: "2rem",
               padding: "0.8rem",
@@ -34,7 +36,8 @@ const PostListItem = ({ postsList }) => {
             <CardContent
               sx={{
                 width: "100%",
-                height: "100%",
+                maxheight: "100%",
+                padding: "0.5rem",
                 backgroundColor: grey[300],
                 display: "flex",
                 flexDirection: "column",
@@ -48,9 +51,8 @@ const PostListItem = ({ postsList }) => {
               >
                 {post.title}
               </Typography>
-
-              <CreateComment postId={post.id} />
             </CardContent>
+            <CreateComment postId={post.id} />
           </Card>
         );
       })}
