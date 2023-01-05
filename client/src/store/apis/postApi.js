@@ -18,15 +18,16 @@ const postApi = createApi({
           };
         },
       }),
-      fetchPosts: builder.query({
-        providesTags: ["post"],
-        query: () => {
-          return {
-            method: "GET",
-            url: "/posts",
-          };
-        },
-      }),
+
+      // fetchPosts: builder.query({
+      // providesTags: ["post"],
+      // query: () => {
+      //   return {
+      //     method: "GET",
+      //     url: "/posts",
+      //   };
+      // },
+      // }),
     };
   },
 });

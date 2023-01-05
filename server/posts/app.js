@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "*",
   })
 );
 
@@ -23,7 +23,6 @@ app.get("/posts", (req, res, next) => {
 app.post("/posts", async (req, res, next) => {
   const id = randomBytes(4).toString("hex");
   const { title } = req.body;
-
   posts[id] = {
     id,
     title,
@@ -32,16 +31,21 @@ app.post("/posts", async (req, res, next) => {
   await axios.post("http://localhost:4005/events", {
     type: "PostCreated",
     data: {
-      id: id,
-      title: title,
+      id,
+      title,
     },
   });
 
   res.status(201).json(posts[id]);
 });
 
-app.post("/events", async (req, res, next) => {});
+// this is the event bus emitted event
+app.post("/events", (req, res) => {
+  console.log("Received Event", req.body.type);
+
+  res.send({});
+});
 
 app.listen(4000, () => {
-  console.log("Listening on 4000");
+  console.log("Posts Service Listening on 4000");
 });

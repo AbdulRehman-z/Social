@@ -19,26 +19,26 @@ const commentApi = createApi({
           };
         },
       }),
-      fetchComments: builder.query({
-        providesTags: (result, error, postId) => {
-          console.log("Post Id: ", postId);
+      // fetchComments: builder.query({
+      //   providesTags: (result, error, postId) => {
+      //     console.log("Post Id: ", postId);
 
-          if (result.length > 0) {
-            return result.map((comment) => ({
-              type: "comment",
-              id: comment.postId,
-            }));
-          } else {
-            return [{ type: "comment", id: postId }];
-          }
-        },
-        query: (postId) => {
-          return {
-            method: "GET",
-            url: `/posts/${postId}/comments`,
-          };
-        },
-      }),
+      //     if (result.length > 0) {
+      //       return result.map((comment) => ({
+      //         type: "comment",
+      //         id: comment.postId,
+      //       }));
+      //     } else {
+      //       return [{ type: "comment", id: postId }];
+      //     }
+      //   },
+      //   query: (postId) => {
+      //     return {
+      //       method: "GET",
+      //       url: `/posts/${postId}/comments`,
+      //     };
+      //   },
+      // }),
     };
   },
 });

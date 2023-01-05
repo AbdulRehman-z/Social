@@ -6,7 +6,7 @@ import CommentsList from "./commentsList";
 import { useState } from "react";
 import { useCreateCommentMutation } from "../../store/store";
 
-const CreateComment = ({ postId }) => {
+const CreateComment = ({ postId, comments }) => {
   const [content, setContent] = useState("");
   const [createComment, result] = useCreateCommentMutation(postId);
 
@@ -29,7 +29,7 @@ const CreateComment = ({ postId }) => {
         justifyContent: "space-between",
       }}
     >
-      <CommentsList postId={postId} />
+      <CommentsList postId={postId} comments={comments} />
       <Box
         component="form"
         onSubmit={handleCreateComment}

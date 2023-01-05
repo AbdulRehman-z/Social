@@ -1,15 +1,35 @@
 import { Container, Typography } from "@mui/material";
-import { useFetchPostsQuery } from "../../store/store";
+import { useFetchPostsQuery, useFetchAllPostsQuery } from "../../store/store";
 import PostListItem from "./postListItem";
 
 const PostList = () => {
-  const { data, error, isLoading } = useFetchPostsQuery();
-
+  const { data, error, isLoading } = useFetchAllPostsQuery();
+  console.log("this is data", data);
   let content;
   if (isLoading) {
-    content = <h5>Wait! Fetching...</h5>;
+    content = (
+      <h5
+        style={{
+          textAlign: "center",
+          fontSize: "1.5rem",
+          marginTop: "6rem",
+        }}
+      >
+        Wait! Fetching...
+      </h5>
+    );
   } else if (error) {
-    content = <h5>Error occured while fetching data😥.Try again</h5>;
+    content = (
+      <h5
+        style={{
+          textAlign: "center",
+          fontSize: "1.5rem",
+          marginTop: "6rem",
+        }}
+      >
+        Error occured while fetching data😥.Try again
+      </h5>
+    );
   } else {
     content = <PostListItem postsList={data} />;
   }

@@ -3,8 +3,6 @@ import { grey } from "@mui/material/colors";
 import CreateComment from "../comments/createComment";
 
 const PostListItem = ({ postsList }) => {
-  console.log("This is data");
-
   return (
     <Box
       sx={{
@@ -52,7 +50,7 @@ const PostListItem = ({ postsList }) => {
                 {post.title}
               </Typography>
             </CardContent>
-            <CreateComment postId={post.id} />
+            <CreateComment postId={post.id} comments={post.comments} />
           </Card>
         );
       })}

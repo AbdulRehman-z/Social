@@ -1,19 +1,19 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { useFetchCommentsQuery } from "../../store/store";
+// import { useFetchCommentsQuery } from "../../store/store";
 import CommentListItem from "./commentListItem";
 
-const CommentsList = ({ postId }) => {
-  const { data, error, isFetching } = useFetchCommentsQuery(postId);
+const CommentsList = ({ postId, comments }) => {
+  // const { data, error, isFetching } = useFetchCommentsQuery(postId);
 
   let content;
-  if (error) {
-    content = <Typography>Something went wrong😥</Typography>;
-  } else if (isFetching) {
-    content = <Typography>Loading...</Typography>;
-  } else {
-    content = <CommentListItem commentsList={data} />;
-  }
+  // if (error) {
+  //   content = <Typography>Something went wrong😥</Typography>;
+  // } else if (isFetching) {
+  //   content = <Typography>Loading...</Typography>;
+  // } else {
+  content = <CommentListItem commentsList={comments} />;
+  // }
 
   return (
     <Box
