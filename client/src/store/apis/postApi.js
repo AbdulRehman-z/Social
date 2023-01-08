@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 const postApi = createApi({
   reducerPath: "createPost",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:4000",
+    baseUrl: "http://post.com:4000",
   }),
   tagTypes: ["post"],
   endpoints(builder) {
@@ -12,7 +12,7 @@ const postApi = createApi({
         invalidatesTags: ["post"],
         query: (body) => {
           return {
-            url: "/posts",
+            url: "/posts/create",
             method: "POST",
             body,
           };
