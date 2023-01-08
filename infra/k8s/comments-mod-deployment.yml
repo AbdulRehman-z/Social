@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: comments-moderation-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: comments-moderation
+  template:
+    metadata:
+      labels:
+        app: comments-moderation
+    spec:
+      containers:
+        - name: event-bus
+          image: abdulrehmanconq/comments-moderation
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: comments-moderation-cluster-ip-service
+spec:
+  selector:
+    app: comments-moderation
+  ports:
+    - name: comments-moderation
+      protocol: TCP
+      targetPort: 4003
+      port: 4003

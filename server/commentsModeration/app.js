@@ -15,7 +15,7 @@ app.post("/events", (req, res) => {
       ? "rejected"
       : "approved";
 
-    axios.post("http://localhost:4005/events", {
+    axios.post("http://event-bus-cluster-ip-service:4005/events", {
       type: "CommentModerated",
       data: {
         id: event.data.id,

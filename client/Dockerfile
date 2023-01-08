@@ -1,6 +1,8 @@
 #Base image
 FROM node:alpine
 
+ENV CI=true
+
 # Set working directory
 WORKDIR /usr/app
 
