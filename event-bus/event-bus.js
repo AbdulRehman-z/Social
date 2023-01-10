@@ -50,6 +50,7 @@ app.post("/events", async (req, res) => {
 });
 
 app.get("/events", (req, res) => {
+  console.log("Event Bus");
   res.send(events);
 });
 
